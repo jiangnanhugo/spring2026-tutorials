@@ -1,0 +1,128 @@
+%====================== HOMEWORK 1 (EASIER) ======================
+\documentclass[10pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{xcolor}
+\geometry{margin=0.8in}
+
+\title{CS-5365 Deep Learning: Homework 1 (written questions)}
+\author{\underline{Your Name:} (\underline{your email address})}
+% \date{\textcolor{red}{\textbf{Deadline: }}} % optional
+
+\begin{document}
+\maketitle
+
+\paragraph{Total: 50 points.}
+
+\section{Derive $\frac{\partial f}{\partial x_i}$ Using the Chain Rule (20 pts)}
+
+\paragraph{Instructions.}
+For each problem below, derive the partial derivative $\frac{\partial f}{\partial x_i}$ with respect to a \emph{single coordinate} $x_i$.
+Show your chain rule steps by introducing intermediate variables whenever helpful.
+
+\bigskip
+
+\noindent\textbf{Question 1 (5 pts):} \textbf{Elementwise nonlinearity then sum.}
+Let $\mathbf{x}\in\mathbb{R}^n$ and define
+\[
+  f(\mathbf{x})=\sum_{j=1}^n \tanh(x_j)^2.
+\]
+Derive $\frac{\partial f}{\partial x_i}$ and justify why only one term in the sum contributes.
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\bigskip
+
+\noindent\textbf{Question 2 (7 pts):} \textbf{Mistake finder (sign and dependency check).}
+Consider
+\[
+  f(\mathbf{x})=\exp\!\left(-\sum_{j=1}^n x_j^2\right).
+\]
+A student claims $\frac{\partial f}{\partial x_i}=2x_i f(\mathbf{x})$.
+Determine whether the claim is correct; if not, provide the corrected derivative and show the chain rule steps.
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\bigskip
+
+\noindent\textbf{Question 3 (8 pts):} \textbf{Self-power function.}
+Let $x>0$ and define
+\[
+  f(x)=x^x.
+\]
+Calculate $\frac{df}{dx}$.
+(Hint: rewrite $f(x)=\exp(x\log x)$ and apply the chain rule.)
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\newpage
+\section{Matrix--Vector Calculations (30 pts)}
+
+\paragraph{Instructions.}
+Show all key steps. Unless stated otherwise, vectors are column vectors.
+
+
+\bigskip
+
+\noindent\textbf{Question 4 (8 pts):} \textbf{Shapes and sanity checks.}
+Let $W\in\mathbb{R}^{m\times n}$, $x\in\mathbb{R}^{n}$, $b\in\mathbb{R}^{m}$, and define $y = Wx + b$.
+\begin{enumerate}
+  \item State the shapes of $y$, $Wx$, and $b$.
+  \item Suppose $x$ is a batch of $B$ examples arranged as $X\in\mathbb{R}^{B\times n}$. Write the batched affine map producing $Y\in\mathbb{R}^{B\times m}$.
+  \item In the batched setting, explain one common broadcasting convention for adding $b$.
+\end{enumerate}
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\bigskip
+
+\noindent\textbf{Question 5 (7 pts):} \textbf{Matrix--vector product (shape + cost).}
+Let $W\in\mathbb{R}^{m\times n}$ and $x\in\mathbb{R}^{n}$.
+\begin{enumerate}
+  \item Write the $i$-th entry of $y=Wx$ as an explicit summation.
+  \item State the shape of $y$.
+  \item Count the number of scalar multiplications and additions required to compute $y$ (as a function of $m,n$).
+\end{enumerate}
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\bigskip
+
+\noindent\textbf{Question 6 (7 pts):} \textbf{Broadcasting practice.}
+Let $X\in\mathbb{R}^{B\times d}$, $b\in\mathbb{R}^{d}$, and $\gamma\in\mathbb{R}^{d}$.
+Consider the computation
+\[
+Y = (X + b)\odot \gamma,
+\]
+where $\odot$ denotes elementwise multiplication.
+\begin{enumerate}
+  \item State the shape of $Y$.
+  \item Explain (in one sentence) how $b$ and $\gamma$ are broadcast to match $X$.
+  \item Write $Y_{i,j}$ explicitly in terms of $X_{i,j}$, $b_j$, and $\gamma_j$.
+\end{enumerate}
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\bigskip
+
+\noindent\textbf{Question 7 (8 pts):} \textbf{Outer product and rank.}
+Let $u\in\mathbb{R}^{m}$ and $v\in\mathbb{R}^{n}$. Define $A = uv^\top$.
+\begin{enumerate}
+  \item State the shape of $A$.
+  \item Write $A_{i,j}$ as a product of scalars.
+  \item Show that $Ax = u(v^\top x)$ for any $x\in\mathbb{R}^{n}$ and explain why this can reduce computation.
+\end{enumerate}
+
+\medskip
+\noindent\fbox{\rule{0pt}{4cm}\rule{\linewidth}{0pt}}
+
+\end{document}
+
